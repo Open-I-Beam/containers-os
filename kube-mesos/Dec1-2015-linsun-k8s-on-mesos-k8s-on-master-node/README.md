@@ -7,7 +7,7 @@ SoftLayer Public CCIs
 Ubuntu 14.04 LTS 64 bits
 Kernel: Linux 3.19.0-31-generic #36~14.04.1-Ubuntu SMP Thu Oct 8 10:21:08 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
 
-**Docker version:**
+###Docker version:
 Client:
  Version:      1.9.0
  API version:  1.21
@@ -24,17 +24,17 @@ Server:
  Built:        Tue Nov  3 17:43:42 UTC 2015
  OS/Arch:      linux/amd64
 
-**Mesos:**
+###Mesos:
 version 0.25.0
 
-**Kubernetes:**
+###Kubernetes:
 1.1 branch, packed as a docker image (linsun/km)
 
 For non-Marathon managed Kubernetes, we start Kubernetes with Ansible Docker module, on meson-master node:
 run the deploy-kube-etcd, which essentially deploys etcs and Kubernetes as 2 containers on Mesos-master node.
 
 
-**Benchmark:**
+###Benchmark:
 Baseline scalability test:
 The test executes sequentially the steps below - we wait for completion of each step before starting the next one.
 1. Start container on swarm with busybox image, default docker networking with docker bridge and icc = true, and the default httpd server
