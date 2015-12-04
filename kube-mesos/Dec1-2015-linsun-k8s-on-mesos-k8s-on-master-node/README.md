@@ -37,8 +37,12 @@ run the deploy-kube-etcd, which essentially deploys etcs and Kubernetes as 2 con
 ###Benchmark:
 Baseline scalability test:
 The test executes sequentially the steps below - we wait for completion of each step before starting the next one.
+
 1. Start container on swarm with busybox image, default docker networking with docker bridge and icc = true, and the default httpd server
+
 2. Capture the time it takes for docker run to return - 'Container Launched'
+
 3. Use inspect on launched container to find out when it goes to 'Running' state - 'Container Running' 
+
 4. Use inspect to get IP address and host for the container and measure time to TCP connectivity.
 
