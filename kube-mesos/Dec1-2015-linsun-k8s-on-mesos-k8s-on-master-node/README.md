@@ -1,6 +1,6 @@
 All tests are performed in a cluster of 2 nodes of SoftLayer machines.
 
-**Hosts**
+###Hosts
 SoftLayer Public CCIs
 1 master: 8 CPU / 16 GB RAM
 2 slaves: 8 CPU / 16 GB RAM
