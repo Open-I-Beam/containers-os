@@ -1,3 +1,5 @@
+###Environment tested
+
 All tests are performed in a cluster of 2 nodes of SoftLayer machines.
 
 ###Hosts
