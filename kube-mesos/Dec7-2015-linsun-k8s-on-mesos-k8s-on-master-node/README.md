@@ -47,4 +47,7 @@ The test executes sequentially the steps below - we wait for completion of each 
 
 4. Use inspect to get IP address and host for the container and measure time to TCP connectivity.
 
+![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/kube-mesos/Dec7-2015-linsun-k8s-on-mesos-k8s-on-master-node/test-3000-Y-axile-30.png "Kubernetest 1.1 on Mesos, not managed by Marathon, Docker 1.9, 10 Nodes Cluster")
+
+
 
