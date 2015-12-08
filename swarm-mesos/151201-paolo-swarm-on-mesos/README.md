@@ -74,23 +74,23 @@ The swarm standalone tests are used to provide a baseline for the swarm mesos te
 ### Swarm on mesos, with Swarm manager as marathon managed app, 10 Nodes
 We saw a significant latency and variance increase in this test with the number of deployed containers. We plan to investigate more on the root cause, however we suspect that one key issue is that we have been deploying Swarm manager in one of the nodes managed by swarm. It is possible that this is affecting the performances of Swarm manager.
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/test-3700-d1.9-k3.19-swarm1.0marathon-mesos0.25-10nodes.png "Swarm 1.0 on Mesos, managed by Marathon, Docker 1.9, 10 Nodes Cluster")
+![alt text](test-3700-d1.9-k3.19-swarm1.0marathon-mesos0.25-10nodes.png "Swarm 1.0 on Mesos, managed by Marathon, Docker 1.9, 10 Nodes Cluster")
 
 ### Swarm on mesos, with Swarm manager deployed on the Mesos Master VM, 10 Nodes, offertimeout=1m
 We observed improved latency and variance with this setup.
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/test-5600-d1.9-k3.19-swarm1.0-mesos0.25-10nodes.png "Swarm 1.0 on Mesos, not managed by Marathon, Docker 1.9, 10 Nodes Cluster, offertimeout=1m")
+![alt text](test-5600-d1.9-k3.19-swarm1.0-mesos0.25-10nodes.png "Swarm 1.0 on Mesos, not managed by Marathon, Docker 1.9, 10 Nodes Cluster, offertimeout=1m")
 
 ### Swarm on mesos, with Swarm manager deployed on the Mesos Master VM, 20 Nodes, offertimeout=10000m
 We observed a further improvement in latency and variance with this setup.
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/test-5000-d1.9-k3.19-swarm1.0-mesos0.25-20nodes-big-offer-timeout.png "Swarm 1.0 on Mesos, not managed by Marathon, Docker 1.9, 20 Nodes Cluster, offertimeout=10000m")
+![alt text](test-5000-d1.9-k3.19-swarm1.0-mesos0.25-20nodes-big-offer-timeout.png "Swarm 1.0 on Mesos, not managed by Marathon, Docker 1.9, 20 Nodes Cluster, offertimeout=10000m")
 
 ### Comparison
 Here is a comparison of the baseline tests on Swarm standalone with Swarm on Mesos in the different configurations described above.
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/Swarm and swarm on mesos comparisons.png "Swarm and Swarm on Mesos scalability tests comparisons")
+![alt text](Swarm and swarm on mesos comparisons.png "Swarm and Swarm on Mesos scalability tests comparisons")
 
 Since our initial tests on Swarm were performed on a 10 nodes cluster, we repeated the Swarm scalability test on the same 20 node cluster we used for the tests on Swarm on Mesos, and we compared the best results we obtained for Swarm on Mesos with stanadlone Swarm:
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/Swarm on mesos vs swarm 20 nodes.png "Swarm and Swarm on Mesos scalability tests comparisons, 20 nodes cluster")
+![alt text](Swarm on mesos vs swarm 20 nodes.png "Swarm and Swarm on Mesos scalability tests comparisons, 20 nodes cluster")
