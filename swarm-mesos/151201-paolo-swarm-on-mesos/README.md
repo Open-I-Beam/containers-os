@@ -69,7 +69,7 @@ We have tested Swarm with the following setups:
 ### Swarm standalone, 10 nodes
 The swarm standalone tests are used to provide a baseline for the swarm mesos tests. We found that swarm standalone scales quite well, and the linear growth in time for each new container started closely mirrors the performances of the docker engine running on a single node.
 
-![alt text](https://github.com/Open-I-Beam/containers-os/blob/master/swarm-mesos/151201-paolo-swarm-on-mesos/test-10000-d1.9-k3.19-swarm1.0-10nodes.png "Swarm 1.0, Docker 1.9, 10 Nodes Cluster")
+![alt text](test-10000-d1.9-k3.19-swarm1.0-10nodes.png "Swarm 1.0, Docker 1.9, 10 Nodes Cluster")
 
 ### Swarm on mesos, with Swarm manager as marathon managed app, 10 Nodes
 We saw a significant latency and variance increase in this test with the number of deployed containers. We plan to investigate more on the root cause, however we suspect that one key issue is that we have been deploying Swarm manager in one of the nodes managed by swarm. It is possible that this is affecting the performances of Swarm manager.
