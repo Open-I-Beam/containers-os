@@ -11,4 +11,4 @@ Kubernetes on Mesos contains the scalability tests we performed on various Kuber
 
 ## swarm-mesos
 Swarm on Mesos contains the scalability tests we performed on various Swarm on Mesos environments.
-[151201-paolo-swarm-on-mesos](151201-paolo-swarm-on-mesos)
+[151201-paolo-swarm-on-mesos](swarm-mesos/151201-paolo-swarm-on-mesos)
