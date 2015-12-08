@@ -45,7 +45,7 @@ docker run -e Swarm_MESOS_USER=root -d -p 4375:2375 -p 3376:3375 --name Swarm Sw
 We tested with mesos.offertimeout=1m and mesos.offertimeout=10000m (so that offers never expire)
 
 ## Benchmark
-Baseline scalability test:
+[Baseline scalability test](../scripts/scaletest-swarm.sh)
 The test executes sequentially the following steps:
 
 1. Start container on Swarm with busybox image, default docker networking with docker bridge and icc = true, and the default httpd server
