@@ -7,3 +7,4 @@ Kubernetes on Mesos contains the scalability tests we performed on various Kuber
 - [Dec1-2015-linsun-k8s-on-mesos-k8s-on-master-node](kube-mesos/Dec1-2015-linsun-k8s-on-mesos-k8s-on-master-node): 1 master 2 nodes, kubernetes deployed as container on mesos-master
 - [Dec2-2015-linsun-k8s-on-mesos-as-marathon-app](kube-mesos/Dec2-2015-linsun-k8s-on-mesos-as-marathon-app): 1 master 2 nodes, kubernete deployed as container as a marathon app with performance tuning
 - [Dec2-2015-linsun-k8s-on-mesos-k8s-on-master-node](kube-mesos/Dec2-2015-linsun-k8s-on-mesos-k8s-on-master-node): 1 master 2 nodes, kubernetes deployed as container on mesos-master with performance tuning
+- [Dec7-2015-linsun-k8s-on-mesos-k8s-on-master-node](kube-mesos/Dec7-2015-linsun-k8s-on-mesos-k8s-on-master-node): 1 master 10 nodes, kubernetes deployed as container on mesos-master with performance tuning
