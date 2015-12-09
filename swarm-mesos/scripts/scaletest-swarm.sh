@@ -18,7 +18,7 @@ if [ -z "$1" ]; then
 fi
 
 if [ $1 = 'run' ]; then
-  for (( i=4630; i<=$MAX_CONTAINERS; i++ ))
+  for (( i=1; i<=$MAX_CONTAINERS; i++ ))
   do
     container=cont$i
 
