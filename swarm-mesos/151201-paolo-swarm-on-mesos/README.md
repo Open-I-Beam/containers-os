@@ -8,7 +8,7 @@ Hosts:
 ```
 SoftLayer Public CCIs
 1 master: 8 CPU / 16 GB RAM
-10/20 slaves: 8 CPU / 16 GB RAM
+10/20 workers: 8 CPU / 16 GB RAM
 Ubuntu 14.04 LTS 64 bits
 Kernel: Linux 3.19.0-31-generic #36~14.04.1-Ubuntu SMP Thu Oct 8 10:21:08 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux
 ```
@@ -94,3 +94,37 @@ Here is a comparison of the baseline tests on Swarm standalone with Swarm on Mes
 Since our initial tests on Swarm were performed on a 10 nodes cluster, we repeated the Swarm scalability test on the same 20 node cluster we used for the tests on Swarm on Mesos, and we compared the best results we obtained for Swarm on Mesos with stanadlone Swarm:
 
 ![alt text](Swarm on mesos vs swarm 20 nodes.png "Swarm and Swarm on Mesos scalability tests comparisons, 20 nodes cluster")
+
+### Mesos logs analysis
+We have processed the Mesos master and  to extract the time difference between different events during the test run. The following analysis applies
+to Swarm on mesos, with Swarm manager deployed on the Mesos Master VM, 20 Nodes, offertimeout=10000m. The events and time differences being considered are the following:
+
+### Master log
+We have extracted the following metrics:
+
+- t_sending_to_accept: time from sending an offer to the Swarm framework to the time the offer is accepted
+- t_accept_to_adding: time from framework accepting an offer to when task is added for execution
+- t_adding_to_running: time from when task was added to when is reported running
+- offer_interval_time: time interval between offer sent by Mesos to the Swarm framework
+
+![alt text](mesos-master-log-analysis.png "Mesos master log analysis")
+
+We have also verified that offers are always available to Swarm during the run, extracting the total number of offers available to the framework:
+
+![alt text](mesos-log-offers.png "Offers available to Swarm during test run")
+
+### Workers log
+
+We have extracted the following metrics:
+
+- t_assigned_to_launching_exec: time from when a task is assigned to when executor is launched
+- t_launching_exec_to_starting_cont: time from when executor is launched to when container is launched
+- t_starting_cont_to_registered_exec: time from when container is launched to when executor is registered
+- t_registered_exec_to_running: time from when executor is registered to when container is launched
+
+![alt text](mesos-slave-10.143.129.197.png "Mesos worker log analysis")
+
+### Comparison with docker engine performance in the same worker node
+To compare the Mesos executor execution path in the worker node with launching directly the container from the engine (as for example happens when running with standalone Swarm), we repeated the sequential test directly on the Mesos worker node invoking directly the engine with the docker CLI. The results are below:
+
+![alt text](mesos-slave-engine-performance.png "Docker engine performances on a single node")
