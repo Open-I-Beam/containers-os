@@ -111,7 +111,7 @@ We have extracted the following metrics:
 
 We have also verified that offers are always available to Swarm during the run, extracting the total number of offers available to the framework:
 
-![alt text](mesos-log-offers.png "Offers available to Swarm during test run")
+![alt text](mesos.log-offers.png "Offers available to Swarm during test run")
 
 ### Workers log
 
