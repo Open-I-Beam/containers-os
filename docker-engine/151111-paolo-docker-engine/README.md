@@ -75,12 +75,16 @@ Note that we wait for completion of each step before starting the next one.
 
 ## Results
 
+The following tests were ran with docker 1.8.3 and kernel 3.13. We then repeated the tests with docker 1.9.0 and kernel 3.19. A comparison is shown at the bottom of this page. 
+
 ### Docker Engine with no Network
 Execute sequentially the steps below:
+
 1. Start container on node with busybox image, no docker networking (--net=none) - to make the test comparable with the one with network, we launch also the HTTPD process as in the networked test using:
 ```
 docker run --name $container -tid -busybox httpd -f -p 3000 )
 ```
+
 2. Capture the time it takes for docker run to return - 'Container Launched'
 
 3. Use inspect on launched container to find out when it goes to 'Running' state - 'Container Running'
@@ -89,17 +93,19 @@ docker run --name $container -tid -busybox httpd -f -p 3000 )
 
 ### Docker Engine with default Docker Bridge Network and icc=true
 Execute sequentially the steps below:
+
 1. Start container on node with busybox image, default docker networking, and httpd in foreground
 ```
 docker run --name $container -tid -p $port:3000 busybox httpd -f -p 3000
 ```
+
 2. Capture the time it takes for docker run to return - 'Container Launched'
 
 3. Use inspect on launched container to find out when it goes to 'Running' state - 'Container Running'
 
 4. Measure the time required to open a TCP connection to the httpd process in the container
 
-![alt text](test-1000-engine-1.8.3-k3.13-net_bridge-icc-false "Docker engine performances on a single node, icc=false, docker bridge")
+![alt text](test-1000-engine-1.8.3-k3.13-net_bridge-icc-true.png "Docker engine performances on a single node, icc=true, docker bridge")
 
 ### Docker Engine with default Docker Bridge Network and icc=false
 
