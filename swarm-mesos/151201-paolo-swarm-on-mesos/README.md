@@ -124,7 +124,61 @@ We have extracted the following metrics:
 
 ![alt text](mesos-slave-10.143.129.197.png "Mesos worker log analysis")
 
-### Comparison with docker engine performance in the same worker node
+## Comparison with docker engine performance in the same worker node
 To compare the Mesos executor execution path in the worker node with launching directly the container from the engine (as for example happens when running with standalone Swarm), we repeated the sequential test directly on the Mesos worker node invoking directly the engine with the docker CLI. The results are below:
 
 ![alt text](mesos-slave-engine-performance.png "Docker engine performances on a single node")
+
+## System utilization
+
+### Master node
+The following plot illustrates a summary of the system utilization in the master node during the test, which took about 2 h 15 m to run.
+
+![alt text](system-summary-master.png "Master system utilization")
+
+### Slave node
+The following plot illustrates a summary of the system utilization in one of the worker nodes during the test.
+
+![alt text](system-summary-slave.png "Worker system utilization")
+
+#### Cumulative memory by process on worker node
+We have also plotted the cumulative memory consumed by all processes during the run, based on top data.
+
+![alt text](slave-cumulative-memory.png "Worker cumulative memory by process")
+
+### Tunings on the workers
+At the end of the test run we had a total of 5000 containers on 20 nodes, that is, 250 containers per worker node. Looking at the processes, we found that for each
+container we had 3 processes:
+
+- the process inside the container (httpd)
+- the mesos docker executor
+- the docker userland proxy
+
+for a total of 750 processes. We decided to disable userland proxy (which is not needed with recent kernels) and ran a new 5k sequential scaling test.
+We found an improvement of latency in the analysis of the log events for the workers, illustrated in the plot below:
+
+![alt text](mesos-slave-10.143.129.197-docker-proxy-off.png "Mesos worker log analysis with userland proxy off")
+
+#### Comparison with previous results for worker events:
+
+With userland proxy on
+
+| Events	| Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
+-------------------------------------------------------------------------------
+| t_starting_cont_to_registered_exec	|		331.30 |	215.22 |	280	639.6 |
+| t_registered_exec_to_running		|	981.59	| 304.47	| 817	| 1418.2 |
+
+
+With userland proxy off
+
+| Events |Average (ms) |	Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
+------------------------------------------------------------------------
+| t_starting_cont_to_registered_exec |	336.56| 220.39	| 275	| 661.2 |
+| t_registered_exec_to_running	|		803.46	| 126.63	| 715	| 1015    |
+
+#### Comparison with previous results for container launch time in 5k sequential test
+
+	| Userland Proxy | Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
+  ------------------------------------------------------------------------------------
+	| on | 1424.23	| 445.99	| 1317	| 2073.1 |
+	| off | 1352.95	| 394.51	| 1244	| 1941  |
