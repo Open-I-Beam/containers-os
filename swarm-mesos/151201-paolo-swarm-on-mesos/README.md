@@ -122,7 +122,7 @@ We have extracted the following metrics:
 - t_starting_cont_to_registered_exec: time from when container is launched to when executor is registered
 - t_registered_exec_to_running: time from when executor is registered to when container is launched
 
-![alt text](mesos-slave-10.143.129.197.png "Mesos worker log analysis")
+![alt text](mesos-slave-10.143.129.197-docker-proxy-on.png "Mesos worker log analysis")
 
 ## Comparison with docker engine performance in the same worker node
 To compare the Mesos executor execution path in the worker node with launching directly the container from the engine (as for example happens when running with standalone Swarm), we repeated the sequential test directly on the Mesos worker node invoking directly the engine with the docker CLI. The results are below:
@@ -161,24 +161,24 @@ We found an improvement of latency in the analysis of the log events for the wor
 
 #### Comparison with previous results for worker events:
 
-With userland proxy on
+With userland proxy on:
 
 | Events	| Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
--------------------------------------------------------------------------------
+|---------|---------------|---------------|-------------|---------------------|
 | t_starting_cont_to_registered_exec	|		331.30 |	215.22 |	280	639.6 |
 | t_registered_exec_to_running		|	981.59	| 304.47	| 817	| 1418.2 |
 
 
-With userland proxy off
+With userland proxy off:
 
 | Events |Average (ms) |	Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
-------------------------------------------------------------------------
+|--------|-------------|----------------|-------------|---------------------|
 | t_starting_cont_to_registered_exec |	336.56| 220.39	| 275	| 661.2 |
 | t_registered_exec_to_running	|		803.46	| 126.63	| 715	| 1015    |
 
 #### Comparison with previous results for container launch time in 5k sequential test
 
 	| Userland Proxy | Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
-  ------------------------------------------------------------------------------------
+  |----------------|--------------|---------------|-------------|---------------------|
 	| on | 1424.23	| 445.99	| 1317	| 2073.1 |
 	| off | 1352.95	| 394.51	| 1244	| 1941  |
