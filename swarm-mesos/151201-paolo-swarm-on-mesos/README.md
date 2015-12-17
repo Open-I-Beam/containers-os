@@ -165,7 +165,7 @@ With userland proxy on:
 
 | Events	| Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
 |---------|---------------|---------------|-------------|---------------------|
-| t_starting_cont_to_registered_exec	|		331.30 |	215.22 |	280	639.6 |
+| t_starting_cont_to_registered_exec	|		331.30 |	215.22 |	280	| 639.6 |
 | t_registered_exec_to_running		|	981.59	| 304.47	| 817	| 1418.2 |
 
 
@@ -176,7 +176,9 @@ With userland proxy off:
 | t_starting_cont_to_registered_exec |	336.56| 220.39	| 275	| 661.2 |
 | t_registered_exec_to_running	|		803.46	| 126.63	| 715	| 1015    |
 
-#### Comparison with previous results for container launch time in 5k sequential test
+#### Comparison with previous results
+
+This is the summary for container launch time in 5k sequential test:
 
 	| Userland Proxy | Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
   |----------------|--------------|---------------|-------------|---------------------|
