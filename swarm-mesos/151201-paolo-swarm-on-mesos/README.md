@@ -180,7 +180,7 @@ With userland proxy off:
 
 This is the summary for container launch time in 5k sequential test:
 
-	| Userland Proxy | Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
-  |----------------|--------------|---------------|-------------|---------------------|
-	| on | 1424.23	| 445.99	| 1317	| 2073.1 |
-	| off | 1352.95	| 394.51	| 1244	| 1941  |
+| Userland Proxy | Average (ms)	| Std. Dev (ms)	| Median (ms)	| 90th Percentile(ms) |
+|----------------|--------------|---------------|-------------|---------------------|
+| on | 1424.23	| 445.99	| 1317	| 2073.1 |
+| off | 1352.95	| 394.51	| 1244	| 1941  |
