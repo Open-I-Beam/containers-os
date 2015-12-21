@@ -1,10 +1,5 @@
 # Swarm on Mesos scalability tests
 
-## Update (12\18\2015)
-A new fix to the problematic lock was merged into latest Swarm (https://github.com/docker/swarm/commit/219f7192d67c2d3a215d9362cb03f2739323b199)
-
-See description in: https://github.com/docker/swarm/issues/1495
-
 ## Environment tested
 
 All tests are performed in a cluster of 10 nodes of SoftLayer virtual machines.
@@ -63,6 +58,10 @@ We performed the test on swarm standalone to get a baseline and compare with swa
 
 ### Swarm on Mesos
 When running on Mesos, we found that throughput did not scale with the number of threads. We investigated in the code and found one issue with locks, and submitted a PR for it (https://github.com/docker/swarm/pull/1554). With the lock fix in place, we got the throughput to scale with the number of threads.
+
+### Update (12\18\2015)
+Our fix to the lock problem was merged into latest Swarm (https://github.com/docker/swarm/commit/219f7192d67c2d3a215d9362cb03f2739323b199)
+
 
 ![alt text](throughput_graph_mesos.png "Throughput test on swarm with mesos")
 
