@@ -1,5 +1,10 @@
 # Swarm on Mesos scalability tests
 
+## Update (12\18\2015)
+A new fix to the problematic lock was merged into latest Swarm (https://github.com/docker/swarm/commit/219f7192d67c2d3a215d9362cb03f2739323b199)
+
+See description in: https://github.com/docker/swarm/issues/1495
+
 ## Environment tested
 
 All tests are performed in a cluster of 10 nodes of SoftLayer virtual machines.
